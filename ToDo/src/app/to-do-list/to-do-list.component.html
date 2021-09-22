@@ -1,2 +1,8 @@
-<app-to-do-input></app-to-do-input>
-<div *ngFor='let todo of todos'>{{ todo.title }}</div>
+<div class="wrapper">
+  <h1>ToDo List</h1>
+  <app-to-do-input></app-to-do-input>
+    <ul >
+        <li *ngFor='let todo of todos'><div class="list-item">{{ todo.title }} <button (click)='onDelete(todo.title)'>x</button></div>
+        </li>
+      </ul>
+</div>

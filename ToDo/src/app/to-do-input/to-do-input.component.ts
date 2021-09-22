@@ -10,7 +10,7 @@ export class ToDoInputComponent implements OnInit {
 
   todo;
 
-  constructor(private toDoService:ToDoService) { }
+  constructor(private toDoService: ToDoService) { }
 
   ngOnInit(): void {
 

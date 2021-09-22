@@ -21,4 +21,10 @@ export class ToDoService {
     this.todos.push(todo);
     console.log(this.todos);
   }
+
+  deleteTodo(todo){
+    this.todos = this.todos.filter(item => item.title !== todo);
+    console.log(this.todos);
+    
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { ToDoService } from '../services/todo.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ToDoService } from '../services/todo.service';
   templateUrl: './to-do-list.component.html',
   styleUrls: ['./to-do-list.component.scss'],
 })
-export class ToDoListComponent implements OnInit {
+export class ToDoListComponent implements OnInit, AfterContentChecked {
   
   todos;
 
@@ -14,6 +14,16 @@ export class ToDoListComponent implements OnInit {
 
   ngOnInit(): void {
   this.todos = this.toDoService.getToDos();
-  }
+  console.log(this.todos);
   
+  }
+
+  onDelete(todo){
+    this.toDoService.deleteTodo(todo);
+    console.log(this.todos);
+    
+  }
+  ngAfterContentChecked(){
+    this.todos = this.toDoService.getToDos();
+  }
 }
