@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class ToDoService {
 
   todos = [
-    { id: 1, title: 'Read a book' },
-    { id: 2, title: 'Go for a run' },
-    { id: 3, title: 'Take out the trash' }
+    {  title: 'Read a book' },
+    { title: 'Go for a run' },
+    { title: 'Take out the trash' }
   ];
 
   constructor() { }
@@ -17,4 +17,8 @@ export class ToDoService {
     return this.todos;
   }
 
+  addToDo(todo){
+    this.todos.push(todo);
+    console.log(this.todos);
+  }
 }
