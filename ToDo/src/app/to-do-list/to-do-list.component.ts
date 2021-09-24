@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { ToDoService } from '../services/todo.service';
 
 @Component({

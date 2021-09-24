@@ -1,8 +1,5 @@
 <div class="wrapper">
   <h1>ToDo List</h1>
   <app-to-do-input (onToDoAdded)='addToDo($event)'></app-to-do-input>
-    <ul >
-        <li *ngFor='let todo of todos'><div class="list-item">{{ todo.title }} <button (click)='onDelete(todo)'>x</button></div>
-        </li>
-      </ul>
+    <app-to-do-item *ngFor='let todo of todos' [todoItem]='todo' (itemDeleted)='onDelete($event)'></app-to-do-item>
 </div>
