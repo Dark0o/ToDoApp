@@ -8,7 +8,7 @@ import { ToDoService } from '../services/todo.service';
 })
 export class ToDoListComponent implements OnInit {
   todos;
-
+  completed;
   constructor(private toDoService: ToDoService) {}
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class ToDoListComponent implements OnInit {
 
   addToDo(todo) {
     console.log(todo);
-    this.toDoService.addToDo({ title: todo }).subscribe(response => {
+    this.toDoService.addToDo({ title: todo, isCompleted:  this.completed}).subscribe(response => {
       console.log(response)
       this.todos.push({ title: todo, id: response.name});
     });
@@ -34,5 +34,10 @@ export class ToDoListComponent implements OnInit {
     this.todos = this.todos.filter((item) => item.title !== todo.title);
     this.toDoService.deleteToDo(todo.id);
     console.log(this.todos);
+  }
+
+  onItemChecked(completed){
+this.completed = completed;
+console.log(completed); 
   }
 }
