@@ -13,10 +13,9 @@ export class ToDoListComponent implements OnInit {
 
   ngOnInit() {
     this.toDoService.getToDos().subscribe((todos) => {
-      console.log(todos);
       this.todos = todos;
+      console.log(this.todos);
     });
-    console.log(this.todos);
   }
 
   addToDo(todo) {
@@ -29,14 +28,8 @@ export class ToDoListComponent implements OnInit {
   onDelete(todo) {
     console.log(todo);
     console.log('delete');
-    this.todos = this.todos.filter((item) => item.title !== todo);
-    //this.toDoService.deleteTodo(todo);
+    this.todos = this.todos.filter((item) => item.title !== todo.title);
+    this.toDoService.deleteToDo(todo.id);
     console.log(this.todos);
   }
-
-  // ngAfterContentChecked(){
-  //   this.todos = this.toDoService.getToDos();
-  //   console.log(this.todos);
-  //   console.log('afterContentChecked');
-  // }
 }

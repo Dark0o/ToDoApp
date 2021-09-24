@@ -2,7 +2,7 @@
   <h1>ToDo List</h1>
   <app-to-do-input (onToDoAdded)='addToDo($event)'></app-to-do-input>
     <ul >
-        <li *ngFor='let todo of todos'><div class="list-item">{{ todo.title }} <button (click)='onDelete(todo.title)'>x</button></div>
+        <li *ngFor='let todo of todos'><div class="list-item">{{ todo.title }} <button (click)='onDelete(todo)'>x</button></div>
         </li>
       </ul>
 </div>

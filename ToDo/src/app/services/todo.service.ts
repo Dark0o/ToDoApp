@@ -21,12 +21,12 @@ export class ToDoService {
    return this.http.get('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json')
    .pipe(map(responseData => {
      const todosArray = [];
-     console.log( responseData);
+     //console.log( responseData);
      
      for(const key in responseData){
-       console.log(key);
+      //  console.log(key);
        
-       console.log({...responseData[key]});
+      //  console.log({...responseData[key]});
        
       todosArray.push({...responseData[key], id: key});
      }
@@ -44,9 +44,8 @@ export class ToDoService {
     
   }
 
-  // deleteTodo(todo){
-  //   this.todos = this.todos.filter(item => item.title !== todo);
-  //   console.log(this.todos);
-    
-  // }
+  deleteToDo(id:string){
+    return this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`).subscribe();
+    }
+  
 }
