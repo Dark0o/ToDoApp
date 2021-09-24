@@ -36,8 +36,9 @@ export class ToDoService {
     
   }
 
-  deleteToDo(id:string){
-    return this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`).subscribe();
+  deleteToDo(id){
+     this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`).subscribe();
     }
+
   
 }
