@@ -20,8 +20,11 @@ export class ToDoListComponent implements OnInit {
 
   addToDo(todo) {
     console.log(todo);
-    this.toDoService.addToDo({ title: todo });
-    this.todos.push({ title: todo });
+    this.toDoService.addToDo({ title: todo }).subscribe(response => {
+      console.log(response)
+      this.todos.push({ title: todo, id: response.name});
+    });
+    
     console.log(this.todos);
   }
 

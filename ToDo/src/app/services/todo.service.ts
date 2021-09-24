@@ -8,12 +8,6 @@ import { map } from 'rxjs/operators';
 })
 export class ToDoService {
 
-  // todos = [
-  //   {  title: 'Read a book' },
-  //   { title: 'Go for a run' },
-  //   { title: 'Take out the trash' }
-  // ];
-
   constructor(private http:HttpClient) { }
 
   getToDos() :Observable<any>{
@@ -34,13 +28,11 @@ export class ToDoService {
    }))
   }
 
-  addToDo(todo){
+  addToDo(todo):Observable<any>{
     console.log(todo);
     
-   this.http.post('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json',todo ).subscribe(response => {
-     console.log(response);
+   return this.http.post('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json',todo );
      
-   })
     
   }
 
