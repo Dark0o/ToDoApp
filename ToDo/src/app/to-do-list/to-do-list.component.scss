@@ -8,9 +8,8 @@ ul {
   padding: 0;
   width: 200px;
 }
-.list-item{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+app-to-do-item {
+  margin-top: 10px;
 }
 
