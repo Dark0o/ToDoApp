@@ -7,31 +7,32 @@ import { ToDoService } from '../services/todo.service';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
-  
   todos;
 
   constructor(private toDoService: ToDoService) {}
 
-  ngOnInit(){
-    
-    
-   this.toDoService.getToDos().subscribe(todos => {
-    console.log(todos);
-    this.todos = todos;
-  });
-  console.log(this.todos);
-  
+  ngOnInit() {
+    this.toDoService.getToDos().subscribe((todos) => {
+      console.log(todos);
+      this.todos = todos;
+    });
+    console.log(this.todos);
   }
 
-  onDelete(todo){
+  addToDo(todo) {
+    console.log(todo);
+    this.toDoService.addToDo({ title: todo });
+    this.todos.push({ title: todo });
+    console.log(this.todos);
+  }
+
+  onDelete(todo) {
     console.log(todo);
     console.log('delete');
-    this.todos = this.todos.filter(item => item.title !== todo);
+    this.todos = this.todos.filter((item) => item.title !== todo);
     //this.toDoService.deleteTodo(todo);
     console.log(this.todos);
-    
   }
-
 
   // ngAfterContentChecked(){
   //   this.todos = this.toDoService.getToDos();
