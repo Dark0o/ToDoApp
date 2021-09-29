@@ -1,15 +1,14 @@
 <div class="container">
     <div>
-      <form #loginForm="ngForm">
+      <form>
         <div class="input-container">
-          <input class="fields" type='text' name='username' placeholder="username" ngModel>
-          <input class="fields" type="password" name="password" placeholder="password" ngModel>
+          <input class="fields" type='text' name='username' placeholder="email" [(ngModel)]='username'>
+          <input class="fields" type="password" name="password" placeholder="password" [(ngModel)]='password'>
         </div>
-  
         <div class="btn-container">
-          <button class="btn" type="submit">Log in</button>
+          <button class="btn" (click)='onLogIn(username, password)'>Log In</button>
+          <button class="btn" (click)='onSignUp(username, password)'>Sign Up</button>
         </div>
-  
       </form>
     </div>
   </div>

@@ -9,6 +9,8 @@
 
 .btn-container{
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-container{
@@ -25,8 +27,9 @@
 
 
  .btn{
+     margin-top: 5px;
      cursor: pointer;
      width: 220px;
      border: none;
-     height: 50px;
+     height: 30px;
  }
