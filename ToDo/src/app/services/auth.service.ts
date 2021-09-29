@@ -34,4 +34,9 @@ export class AuthService {
     } else alert('Incorrect username or password!');
   }
 
+  isUserLoggedIn(): boolean {
+    console.log(this.isLoggedIn);
+    return this.isLoggedIn;
+  }
+
 }

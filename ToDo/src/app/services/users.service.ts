@@ -30,7 +30,13 @@ export class UsersService {
   }
 
   addUser(user) : Observable<any>{
-
+if(this.users.length > 0){
+  if(this.userExists(user.username, user.password)){
+    alert('User already exists, please Log In');
+    return;
+  }
+  
+}
     return this.http.post('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/users.json', user);
   }
 
