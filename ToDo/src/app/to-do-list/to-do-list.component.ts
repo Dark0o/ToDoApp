@@ -69,6 +69,7 @@ console.log('this happened');
       });
 
     console.log(this.todos);
+    console.log(this.filteredTodos);
   }
 
   onDelete(todo) {

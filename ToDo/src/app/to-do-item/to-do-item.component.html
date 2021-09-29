@@ -3,7 +3,7 @@
     <label>
         <input type="checkbox" [checked]='todoItem.isCompleted' (click)='toggleCheckbox(todoItem)'
         >
-      <span [ngClass]="{'completed' : todoItem.isCompleted}">{{ todoItem.title }}, added on: {{ date }} </span>
+      <span [ngClass]="{'completed' : todoItem.isCompleted}">{{ todoItem.title }}, added: {{ date }} </span>
     </label>
   </div>
 
