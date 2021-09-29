@@ -8,7 +8,6 @@ import { ToDoService } from '../services/todo.service';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
- 
   todos;
   completed = false;
   filteredTodos;
@@ -30,20 +29,42 @@ export class ToDoListComponent implements OnInit {
   ngOnInit() {
     this.toDoService.getToDos().subscribe((todos) => {
       console.log(todos);
-      
+
       this.todos = todos;
       this.performFilter();
       console.log(this.todos);
     });
   }
 
+  selectChangeHandler(event) {
+    console.log(event.target.value);
+    if (event.target.value === 'name') {
+      this.sortByName(this.filteredTodos);
+    }
+    if(event.target.value === 'newest'){
+this.sortNewest(this.filteredTodos);
+console.log('this happened');
+    }
+    if(event.target.value === 'oldest'){
+      this.sortOldest(this.filteredTodos)
+    }
+  }
+
   addToDo(todo) {
     console.log(todo);
     this.toDoService
-      .addToDo({ title: todo, isCompleted: this.completed, createdAt: Date.now()})
+      .addToDo({
+        title: todo,
+        isCompleted: this.completed,
+        createdAt: Date.now(),
+      })
       .subscribe((response) => {
         console.log(response);
-        this.todos.push({ title: todo, id: response.name, createdAt: Date.now()});
+        this.todos.push({
+          title: todo,
+          id: response.name,
+          createdAt: Date.now(),
+        });
         console.log(this.todos);
       });
 
@@ -61,7 +82,6 @@ export class ToDoListComponent implements OnInit {
   }
 
   onItemChecked(todo) {
-    
     this.toDoService.updateToDo(todo);
   }
 
@@ -77,5 +97,23 @@ export class ToDoListComponent implements OnInit {
       this.filteredTodos = this.todos;
       console.log('else happened');
     }
+  }
+
+  sortByName(arr) {
+    arr.sort((a, b) => {
+      return a.title.localeCompare(b.title);
+    });
+  }
+
+  sortNewest(arr) {
+    arr.sort((a, b) => {
+      return b.createdAt - a.createdAt;
+    });
+  }
+
+  sortOldest(arr){
+    arr.sort((a,b) => {
+      return a.createdAt - b.createdAt;
+    })
   }
 }

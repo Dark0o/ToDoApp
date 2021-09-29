@@ -1,5 +1,13 @@
 <div class="wrapper">
   <h1>ToDo List</h1>
+  <label >Sort By:
+  <select (change)="selectChangeHandler($event)">
+    <option value="-">-</option>
+    <option value="name">Name</option>
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+  </select>
+</label>
   <app-to-do-input (onToDoAdded)='addToDo($event)'></app-to-do-input>
     <app-to-do-item *ngFor='let todo of filteredTodos' [todoItem]='todo' (itemDeleted)='onDelete($event)' (itemChecked)="onItemChecked($event)"></app-to-do-item>
     <input type="text" [(ngModel)]='filter' placeholder="Search ToDo...">
