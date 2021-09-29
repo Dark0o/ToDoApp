@@ -9,6 +9,7 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { ToDoInputComponent } from './to-do-input/to-do-input.component';
 import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 import { LoginComponent } from './login/login.component';
+import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     ToDoListComponent,
     ToDoInputComponent,
     ToDoItemComponent,
-    LoginComponent
+    LoginComponent,
+    ToDoDetailsComponent
   ],
   imports: [
     BrowserModule,
