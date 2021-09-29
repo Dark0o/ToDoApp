@@ -12,6 +12,7 @@ export class ToDoListComponent implements OnInit {
   completed = false;
   filteredTodos;
   date;
+  important;
 
   private _filter;
 
