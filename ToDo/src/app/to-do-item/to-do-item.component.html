@@ -1,10 +1,9 @@
 <div class="list-item">
   <div class="to-do-item">
     <label>
-        <input type="checkbox" [checked]='todoItem.isCompleted' (click)='toggleCheckbox()'
-        
+        <input type="checkbox" [checked]='todoItem.isCompleted' (click)='toggleCheckbox(todoItem)'
         >
-      <span [ngClass]="{'completed' : todoItem.isCompleted}">{{ todoItem.title }} </span>
+      <span [ngClass]="{'completed' : todoItem.isCompleted}">{{ todoItem.title }}, added on: {{ date }} </span>
     </label>
   </div>
 

@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,14 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ToDoItemComponent implements OnInit {
 
-  isCompleted;
+  
   @Input() todoItem;
   @Output() itemDeleted = new EventEmitter();
   @Output() itemChecked = new EventEmitter();
+  date;
 
   constructor() { }
 
   ngOnInit(): void {
+console.log(this.todoItem);
+
+    this.date = `${new Date(this.todoItem.createdAt).toDateString()}, ${new Date(this.todoItem.createdAt).getHours()}:${new Date(this.todoItem.createdAt).getMinutes()}`;
   }
 
   onItemDeleted(todo){
@@ -23,10 +28,10 @@ export class ToDoItemComponent implements OnInit {
 this.itemDeleted.emit(todo);
   }
 
-  toggleCheckbox(){
-    this.isCompleted = !this.isCompleted;
-    
-    this.itemChecked.emit(this.isCompleted);
+  toggleCheckbox(todo){
+    todo.isCompleted = !todo.isCompleted;
+    console.log(todo);
+    this.itemChecked.emit(todo);
   }
 
 }

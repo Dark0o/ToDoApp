@@ -8,23 +8,26 @@ import { map } from 'rxjs/operators';
 })
 export class ToDoService {
 
+  todos = [];
+
   constructor(private http:HttpClient) { }
 
   getToDos() :Observable<any>{
 
    return this.http.get('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json')
    .pipe(map(responseData => {
-     const todosArray = [];
-     //console.log( responseData);
+     console.log(responseData);
+     
      
      for(const key in responseData){
       //  console.log(key);
        
       //  console.log({...responseData[key]});
        
-      todosArray.push({...responseData[key], id: key});
+      this.todos.push({...responseData[key], id: key});
      }
-     return todosArray;
+     return this.todos;
+
    }))
   }
 
@@ -33,8 +36,13 @@ export class ToDoService {
     
    return this.http.post('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json',todo );
      
-    
   }
+
+ updateToDo (todo){
+   console.log(todo);
+   
+   this.http.patch(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${todo.id}.json`, {isCompleted: todo.isCompleted}).subscribe();
+ }
 
   deleteToDo(id){
      this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`).subscribe();

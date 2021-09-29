@@ -1,4 +1,5 @@
 import {  Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ToDoService } from '../services/todo.service';
 
 @Component({
@@ -7,9 +8,11 @@ import { ToDoService } from '../services/todo.service';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
+ 
   todos;
-  completed;
+  completed = false;
   filteredTodos;
+  date;
 
   private _filter;
 
@@ -26,8 +29,10 @@ export class ToDoListComponent implements OnInit {
 
   ngOnInit() {
     this.toDoService.getToDos().subscribe((todos) => {
+      console.log(todos);
+      
       this.todos = todos;
-      this.performFilter(this.filter);
+      this.performFilter();
       console.log(this.todos);
     });
   }
@@ -35,10 +40,11 @@ export class ToDoListComponent implements OnInit {
   addToDo(todo) {
     console.log(todo);
     this.toDoService
-      .addToDo({ title: todo, isCompleted: this.completed })
+      .addToDo({ title: todo, isCompleted: this.completed, createdAt: Date.now()})
       .subscribe((response) => {
         console.log(response);
-        this.todos.push({ title: todo, id: response.name });
+        this.todos.push({ title: todo, id: response.name, createdAt: Date.now()});
+        console.log(this.todos);
       });
 
     console.log(this.todos);
@@ -47,17 +53,19 @@ export class ToDoListComponent implements OnInit {
   onDelete(todo) {
     console.log(todo);
     console.log('delete');
-    this.filteredTodos = this.filteredTodos.filter((item) => item.title !== todo.title);
+    this.filteredTodos = this.filteredTodos.filter(
+      (item) => item.title !== todo.title
+    );
     this.toDoService.deleteToDo(todo.id);
     console.log(this.todos);
   }
 
-  onItemChecked(completed) {
-    this.completed = completed;
-    console.log(completed);
+  onItemChecked(todo) {
+    
+    this.toDoService.updateToDo(todo);
   }
 
-  performFilter(filterBy) {
+  performFilter(filterBy?) {
     if (filterBy) {
       this.filteredTodos = this.todos.filter(
         (todo) =>
@@ -67,6 +75,7 @@ export class ToDoListComponent implements OnInit {
       );
     } else {
       this.filteredTodos = this.todos;
+      console.log('else happened');
     }
   }
 }
