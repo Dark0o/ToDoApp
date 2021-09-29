@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-item',
@@ -14,7 +15,7 @@ export class ToDoItemComponent implements OnInit {
   @Output() itemChecked = new EventEmitter();
   date;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 console.log(this.todoItem);
@@ -32,6 +33,11 @@ this.itemDeleted.emit(todo);
     todo.isCompleted = !todo.isCompleted;
     console.log(todo);
     this.itemChecked.emit(todo);
+  }
+
+  openToDoDetails(todo){
+    console.log(todo.id);
+this.router.navigate([`todos/${todo.id}`]);
   }
 
 }
