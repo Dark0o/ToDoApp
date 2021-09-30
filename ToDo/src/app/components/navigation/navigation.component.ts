@@ -20,4 +20,8 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(['']);
     this.authService.logoutUser();
   }
+
+  addNew(){
+    this.router.navigate(['todos/new']);
+  }
 }
