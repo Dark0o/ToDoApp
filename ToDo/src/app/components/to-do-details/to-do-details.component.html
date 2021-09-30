@@ -1,1 +1,25 @@
-<p>to-do-details works!</p>
+<div class="container">
+    <h1>ToDo item details</h1>
+    <table >
+        <tr>
+          <td>Title:</td>
+          <td>{{ todo.title }}</td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td>{{ todo.description}}</td>
+        </tr>
+        <tr>
+          <td>Important:</td>
+          <td>{{ todo.important }}</td>
+        </tr>
+        <tr>
+          <td>Done:</td>
+          <td>{{ todo.isCompleted}}</td>
+        </tr>
+        <tr>
+          <td>Created at:</td>
+          <td>{{ todo.createdAt}}</td>
+        </tr>
+     </table>
+</div>

@@ -1,6 +1,8 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { DateFormatter } from 'src/app/DateFormatter';
+
 
 @Component({
   selector: 'app-to-do-item',
@@ -19,8 +21,7 @@ export class ToDoItemComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.date = `${new Date(this.todoItem.createdAt).toDateString()}, ${new Date(this.todoItem.createdAt).getHours()}:${new Date(this.todoItem.createdAt).getMinutes()}`;
+    this.date = DateFormatter.formatDate(this.todoItem.createdAt);
   }
 
   onItemDeleted(todo){
@@ -37,7 +38,9 @@ this.itemDeleted.emit(todo);
 
   openToDoDetails(todo){
     //console.log(todo.id);
-this.router.navigate([`todos/${todo.id}`]);
+this.router.navigate([`todos/${todo.id}`], {
+  state: this.todoItem,
+});
   }
 
 }
