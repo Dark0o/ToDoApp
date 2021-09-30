@@ -81,6 +81,7 @@ export class ToDoListComponent implements OnInit {
       (item) => item.title !== todo.title
     );
     this.toDoService.deleteToDo(todo.id);
+    this.toDoService.todos = this.filteredTodos;
     console.log(this.todos);
   }
 

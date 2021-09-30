@@ -32,5 +32,6 @@ this.authService.login(username, password);
     this.userService.addUser({username: username, password: password}).subscribe(data =>{
       console.log(data);
     })
+    this.userService.users.push({username: username, password: password});
   }
 }
