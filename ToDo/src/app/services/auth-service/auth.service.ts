@@ -40,4 +40,8 @@ export class AuthService {
     return this.isLoggedIn;
   }
 
+  logoutUser(){
+    this.isLoggedIn = false;
+    localStorage.removeItem(this.loggedInUser);
+  }
 }

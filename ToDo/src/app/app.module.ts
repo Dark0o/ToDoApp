@@ -10,6 +10,7 @@ import { ToDoInputComponent } from './components/to-do-input/to-do-input.compone
 import { ToDoItemComponent } from './components//to-do-item/to-do-item.component';
 import { LoginComponent } from './components/login/login.component';
 import { ToDoDetailsComponent } from './components//to-do-details/to-do-details.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ToDoDetailsComponent } from './components//to-do-details/to-do-details.
     ToDoInputComponent,
     ToDoItemComponent,
     LoginComponent,
-    ToDoDetailsComponent
+    ToDoDetailsComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
