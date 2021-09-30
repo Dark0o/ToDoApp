@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -13,6 +13,9 @@ export class ToDoService {
   constructor(private http:HttpClient){}
 
   getToDos() :Observable<any>{
+    if(this.todos.length > 0){
+      return of(this.todos);
+    }
 
    return this.http.get('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json')
    .pipe(map(responseData => {

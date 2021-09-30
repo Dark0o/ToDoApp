@@ -30,7 +30,7 @@ export class DateFormatter {
       return '0' + n;
     }
     return n.toString();
-  }s
+  }
 
   static formatDate(timestamp){
 
