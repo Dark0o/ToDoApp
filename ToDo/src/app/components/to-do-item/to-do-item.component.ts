@@ -18,7 +18,7 @@ export class ToDoItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-console.log(this.todoItem);
+
 
     this.date = `${new Date(this.todoItem.createdAt).toDateString()}, ${new Date(this.todoItem.createdAt).getHours()}:${new Date(this.todoItem.createdAt).getMinutes()}`;
   }
@@ -36,7 +36,7 @@ this.itemDeleted.emit(todo);
   }
 
   openToDoDetails(todo){
-    console.log(todo.id);
+    //console.log(todo.id);
 this.router.navigate([`todos/${todo.id}`]);
   }
 

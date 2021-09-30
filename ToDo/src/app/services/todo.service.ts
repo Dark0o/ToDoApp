@@ -26,9 +26,15 @@ export class ToDoService {
        
       this.todos.push({...responseData[key], id: key});
      }
+     console.log(this.todos);
+     
      return this.todos;
 
    }))
+  }
+
+  getToDoById(id){
+return this.todos.filter(todo => todo.id === id);
   }
 
   addToDo(todo):Observable<any>{

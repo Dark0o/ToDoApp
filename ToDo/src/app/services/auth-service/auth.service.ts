@@ -6,6 +6,7 @@ import { UsersService } from '../users.service';
   providedIn: 'root'
 })
 export class AuthService {
+  
   isLoggedIn: boolean;
   loggedInUser = 'user';
 

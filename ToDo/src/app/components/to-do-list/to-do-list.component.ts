@@ -42,12 +42,12 @@ export class ToDoListComponent implements OnInit {
     if (event.target.value === 'name') {
       this.sortByName(this.filteredTodos);
     }
-    if(event.target.value === 'newest'){
-this.sortNewest(this.filteredTodos);
-console.log('this happened');
+    if (event.target.value === 'newest') {
+      this.sortNewest(this.filteredTodos);
+      console.log('this happened');
     }
-    if(event.target.value === 'oldest'){
-      this.sortOldest(this.filteredTodos)
+    if (event.target.value === 'oldest') {
+      this.sortOldest(this.filteredTodos);
     }
   }
 
@@ -66,6 +66,7 @@ console.log('this happened');
           id: response.name,
           createdAt: Date.now(),
         });
+        this.toDoService.todos = this.todos;
         console.log(this.todos);
       });
 
@@ -113,9 +114,9 @@ console.log('this happened');
     });
   }
 
-  sortOldest(arr){
-    arr.sort((a,b) => {
+  sortOldest(arr) {
+    arr.sort((a, b) => {
       return a.createdAt - b.createdAt;
-    })
+    });
   }
 }
