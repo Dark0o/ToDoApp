@@ -1,6 +1,6 @@
 import {  Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ToDoService } from '../services/todo.service';
+import { ToDoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-to-do-list',

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ToDoService } from '../services/todo.service';
+import { ToDoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-to-do-input',

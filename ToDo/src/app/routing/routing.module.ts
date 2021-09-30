@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { AuthGuardService } from './services/auth-guard.service';
-import { ToDoDetailsComponent } from './to-do-details/to-do-details.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
+import { LoginComponent } from '../components/login/login.component';
+import { AuthGuardService } from '../services/auth-service/auth-guard.service';
+import { ToDoDetailsComponent } from '../components/to-do-details/to-do-details.component';
+import { ToDoListComponent } from '../components/to-do-list/to-do-list.component';
 
 
 const routes: Routes = [
