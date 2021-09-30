@@ -12,7 +12,8 @@ export class ToDoListComponent implements OnInit {
   completed = false;
   filteredTodos;
   date;
-  important;
+  important = false;
+  description = '';
 
   private _filter;
 
@@ -56,6 +57,8 @@ export class ToDoListComponent implements OnInit {
     this.toDoService
       .addToDo({
         title: todo,
+        description: this.description,
+        isImportant: this.important,
         isCompleted: this.completed,
         createdAt: Date.now(),
       })
@@ -66,7 +69,14 @@ export class ToDoListComponent implements OnInit {
           id: response.name,
           createdAt: Date.now(),
         });
-        this.toDoService.todos = this.todos;
+        this.toDoService.todos.push({
+          title: todo,
+          description: this.description,
+        isImportant: this.important,
+        isCompleted: this.completed,
+          id: response.name,
+          createdAt: Date.now(),
+        })
         console.log(this.todos);
       });
 
