@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ITodo  } from '../model/todo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +42,7 @@ export class ToDoService {
 return this.todos.filter(todo => todo.id === id);
   }
 
-  addToDo(todo):Observable<any>{
+  addToDo(todo: ITodo):Observable<any>{
     console.log(todo);
     
    return this.http.post('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json',todo );
