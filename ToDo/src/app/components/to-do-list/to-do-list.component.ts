@@ -15,6 +15,8 @@ export class ToDoListComponent implements OnInit {
   date;
   important = false;
   description = '';
+  toggleImp = false;
+  toggleComplete = false;
 
   private _filter;
 
@@ -51,6 +53,33 @@ export class ToDoListComponent implements OnInit {
     if (event.target.value === 'oldest') {
       this.sortOldest(this.filteredTodos);
     }
+  }
+
+  toggleImportant(){
+
+  this.toggleImp = !this.toggleImp;
+
+  if (this.toggleImp === true) {
+    this.filteredTodos = this.filteredTodos.filter(
+      (todo) => todo.isImportant === true
+    );
+  } else {
+    this.filteredTodos = this.toDoService.todos;
+  }
+  
+  }
+
+  toggleDone(){
+    this.toggleComplete = !this.toggleComplete;
+
+    if (this.toggleComplete === true) {
+      this.filteredTodos = this.filteredTodos.filter(
+        (todo) => todo.isCompleted === true
+      );
+    } else {
+      this.filteredTodos = this.toDoService.todos;
+    }
+    
   }
 
   addToDo(todo) {

@@ -49,13 +49,12 @@ export class ToDoDetailsComponent implements OnInit {
   }
 
   navigateBack() {
-
     this.router.navigate(['todos']);
   }
 
   deleteTodo() {
-    console.log(this.todoService.todos.length);
     this.todoService.deleteToDo(this.todo.id);
+    this.todoService.todos = this.todoService.todos.filter((todo) => todo.id !== this.todo.id)
   }
 
   markImportant(){
