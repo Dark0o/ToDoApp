@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToDoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -10,11 +11,11 @@ export class AddToDoComponent implements OnInit {
 
   title;
   description;
-  important;
+  important = false;
   completed = false;
 
 
-  constructor(private todoService: ToDoService) { }
+  constructor(private todoService: ToDoService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -36,7 +37,13 @@ this.todoService.addToDo({
     createdAt: Date.now(),
   });
 });
+this.router.navigate(['todos']);
+  }
 
+  markImportant(){
+    this.important = !this.important;
+    console.log(this.important);
+    
   }
 
 }

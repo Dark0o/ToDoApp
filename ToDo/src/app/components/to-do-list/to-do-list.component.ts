@@ -64,11 +64,6 @@ export class ToDoListComponent implements OnInit {
       })
       .subscribe((response) => {
         console.log(response);
-        this.todos.push({
-          title: todo,
-          id: response.name,
-          createdAt: Date.now(),
-        });
         this.toDoService.todos.push({
           title: todo,
           description: this.description,
