@@ -1,4 +1,9 @@
-<div class="container">
+<div *ngIf="isDeleted === true" class="delete">
+  <h1>ToDo Item Deleted</h1>
+  <button (click)='navigateBack()'>Back to the list</button>
+</div>
+
+<div *ngIf="isDeleted === false" class="container">
     <h1>ToDo item details</h1>
     <table >
         <tr>

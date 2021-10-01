@@ -13,6 +13,7 @@ export class ToDoDetailsComponent implements OnInit {
   todo;
   date;
   showEdit = false;
+  isDeleted = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -54,7 +55,8 @@ export class ToDoDetailsComponent implements OnInit {
 
   deleteTodo() {
     this.todoService.deleteToDo(this.todo.id);
-    this.todoService.todos = this.todoService.todos.filter((todo) => todo.id !== this.todo.id)
+    this.todoService.todos = this.todoService.todos.filter((todo) => todo.id !== this.todo.id);
+    this.isDeleted = !this.isDeleted;
   }
 
   markImportant(){

@@ -52,3 +52,10 @@ button {
 .label label{
   vertical-align: middle;
 }
+.delete{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
