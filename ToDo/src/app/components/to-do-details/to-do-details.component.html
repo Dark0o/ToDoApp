@@ -22,4 +22,33 @@
           <td>{{ date }}</td>
         </tr>
      </table>
+     <div class="btns">
+       <button (click)='navigateBack()'>Back to the list</button>
+       <button *ngIf='showEdit !== true' (click)='onEdit()'>Edit</button>
+       <button (click)='deleteTodo()'>Delete</button>
+     </div>
+
+     <div>
+      <div *ngIf='showEdit' class="form">
+        <h3>Edit Todo</h3>
+        <div>
+            <input type="text" placeholder="Title" [(ngModel)]='todo.title'>
+        </div>
+        <div>
+            <input type="text" placeholder="Description" [(ngModel)]='todo.description'>
+        </div>
+        <div class="label">
+            <label>Important</label>
+            <input type="checkbox" [checked]='todo.isImportant' (click)='markImportant()'>
+        </div>
+        <div class="label">
+          <label>Done</label>
+          <input type="checkbox" [checked]='todo.isCompleted' (click)='markDone()'>
+      </div>
+      <button (click)='edit()'>Save</button>
+    </div>
+    
+     </div>
+     
+     
 </div>

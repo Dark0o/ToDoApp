@@ -11,6 +11,7 @@ import { ITodo  } from '../model/todo';
 export class ToDoService {
 
   todos = [];
+  todo;
 
   constructor(private http:HttpClient){}
 
@@ -21,7 +22,7 @@ export class ToDoService {
 
    return this.http.get('https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json')
    .pipe(map(responseData => {
-     console.log(responseData);
+     //console.log(responseData);
      
      
      for(const key in responseData){
@@ -52,11 +53,15 @@ return this.todos.filter(todo => todo.id === id);
  updateToDo (todo){
    console.log(todo);
    
-   this.http.patch(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${todo.id}.json`, {isCompleted: todo.isCompleted}).subscribe();
+   this.http.patch(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${todo.id}.json`, todo).subscribe();
  }
 
   deleteToDo(id){
+    console.log(id);
+   
+    
      this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`).subscribe();
+     
     }
 
   
