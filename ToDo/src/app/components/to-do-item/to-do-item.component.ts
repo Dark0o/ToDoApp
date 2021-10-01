@@ -20,6 +20,8 @@ export class ToDoItemComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.todoItem);
+    
 
     this.date = DateFormatter.formatDate(this.todoItem.createdAt);
   }

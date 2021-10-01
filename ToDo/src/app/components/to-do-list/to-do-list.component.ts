@@ -8,6 +8,7 @@ import { ToDoService } from '../../services/todo.service';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
+  
   todos;
   completed = false;
   filteredTodos;
