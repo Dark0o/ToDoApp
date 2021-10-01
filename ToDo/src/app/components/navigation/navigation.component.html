@@ -1,4 +1,7 @@
 <div class="container">
-<button class="btn" (click)='addNew()'>Add New</button>
-<button class="btn" (click)='onLogOut()'>LogOut</button>
+    <h1 *ngIf="hasRoute('/login')">ToDo App</h1>
+    <button class="btn" *ngIf="hasRoute('/todos/new')" (click)='goBack()'>Back to the list</button>
+<button class="btn" *ngIf="hasRoute('/todos')" (click)='addNew()'>Add New</button>
+
+<button class="btn" *ngIf="hasRoute('/todos/new') || hasRoute('/todos') || this.router.url.includes('todos')" (click)='onLogOut()'>LogOut</button>
 </div>

@@ -11,5 +11,4 @@
 </label>
   <app-to-do-input (onToDoAdded)='addToDo($event)'></app-to-do-input>
     <app-to-do-item *ngFor='let todo of filteredTodos' [todoItem]='todo' (itemDeleted)='onDelete($event)' (itemChecked)="onItemChecked($event)"></app-to-do-item>
-   
 </div>

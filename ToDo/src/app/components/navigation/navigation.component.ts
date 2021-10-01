@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(private router: Router,
+  constructor(public router: Router,
     private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -23,5 +23,16 @@ export class NavigationComponent implements OnInit {
 
   addNew(){
     this.router.navigate(['todos/new']);
+  }
+
+  goBack(){
+    this.router.navigate(['todos']);
+  }
+
+  hasRoute(route) {
+    if(this.router.url === route){
+      return true;
+    }
+    
   }
 }
