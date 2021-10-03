@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { defaultMaxListeners } from 'events';
 import { DateFormatter } from 'src/app/DateFormatter';
 import { ToDoService } from 'src/app/services/todo.service';
 
@@ -16,9 +15,9 @@ export class ToDoDetailsComponent implements OnInit {
   isDeleted = false;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private todoService: ToDoService
+    private todoService: ToDoService,
+    private route: ActivatedRoute
   ) {
     this.todo = this.router.getCurrentNavigation().extras.state;
     console.log(this.todo);
@@ -27,29 +26,15 @@ export class ToDoDetailsComponent implements OnInit {
   ngOnInit(): void {
     if (this.todo) {
       this.date = DateFormatter.formatDate(this.todo.createdAt);
+    } else {
+      this.todoService
+        .getToDoById(this.route.snapshot.params.id)
+        .subscribe((todo) => {
+          this.todo = todo;
+          this.date = DateFormatter.formatDate(this.todo.createdAt);
+        });
+      console.log(this.route.snapshot.params.id);
     }
-    // if(!this.todo){
-    //   this.todoService.getToDos().subscribe((todos) => {
-
-    // datum ISO format
-    // notifikacije za usera (saving... to saved,);
-    //loading...
-
-    //     todos.forEach(todo => {
-    //       if(todo.id === this.route.snapshot.params['id']){
-
-    //         console.log('whaat');
-    //         console.log(todo);
-
-    //        this.todo = todo;
-    //        console.log(this.todo );
-
-    //       }
-    //     });
-    //   });
-    // }
-    // console.log(this.todo);
-    // }
   }
 
   navigateBack() {
