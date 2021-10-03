@@ -22,15 +22,10 @@ import { AddToDoComponent } from './components/add-to-do/add-to-do.component';
     LoginComponent,
     ToDoDetailsComponent,
     NavigationComponent,
-    AddToDoComponent
+    AddToDoComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RoutingModule
-  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, RoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

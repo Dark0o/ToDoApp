@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  
   isLoggedIn: boolean;
   loggedInUser = 'user';
 
@@ -40,7 +39,7 @@ export class AuthService {
     return this.isLoggedIn;
   }
 
-  logoutUser(){
+  logoutUser() {
     this.isLoggedIn = false;
     localStorage.removeItem(this.loggedInUser);
   }

@@ -6,8 +6,6 @@ import { ToDoDetailsComponent } from '../components/to-do-details/to-do-details.
 import { ToDoListComponent } from '../components/to-do-list/to-do-list.component';
 import { AddToDoComponent } from '../components/add-to-do/add-to-do.component';
 
-
-
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -26,7 +24,6 @@ const routes: Routes = [
     component: ToDoDetailsComponent,
     canActivate: [AuthGuardService],
   },
-  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

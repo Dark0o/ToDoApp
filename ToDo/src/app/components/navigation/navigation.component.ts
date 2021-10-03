@@ -5,34 +5,30 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
+  constructor(public router: Router, private authService: AuthService) {}
 
-  constructor(public router: Router,
-    private authService: AuthService) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  onLogOut(){
+  onLogOut() {
     console.log('Logged out');
     this.router.navigate(['']);
     this.authService.logoutUser();
   }
 
-  addNew(){
+  addNew() {
     this.router.navigate(['todos/new']);
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['todos']);
   }
 
   hasRoute(route) {
-    if(this.router.url === route){
+    if (this.router.url === route) {
       return true;
     }
-    
   }
 }

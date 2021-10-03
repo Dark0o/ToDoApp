@@ -1,4 +1,4 @@
-import {  Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ToDoService } from '../../services/todo.service';
 
@@ -8,7 +8,6 @@ import { ToDoService } from '../../services/todo.service';
   styleUrls: ['./to-do-list.component.scss'],
 })
 export class ToDoListComponent implements OnInit {
-
   todos;
   completed = false;
   filteredTodos;
@@ -55,21 +54,19 @@ export class ToDoListComponent implements OnInit {
     }
   }
 
-  toggleImportant(){
+  toggleImportant() {
+    this.toggleImp = !this.toggleImp;
 
-  this.toggleImp = !this.toggleImp;
-
-  if (this.toggleImp === true) {
-    this.filteredTodos = this.filteredTodos.filter(
-      (todo) => todo.isImportant === true
-    );
-  } else {
-    this.filteredTodos = this.toDoService.todos;
-  }
-  
+    if (this.toggleImp === true) {
+      this.filteredTodos = this.filteredTodos.filter(
+        (todo) => todo.isImportant === true
+      );
+    } else {
+      this.filteredTodos = this.toDoService.todos;
+    }
   }
 
-  toggleDone(){
+  toggleDone() {
     this.toggleComplete = !this.toggleComplete;
 
     if (this.toggleComplete === true) {
@@ -79,7 +76,6 @@ export class ToDoListComponent implements OnInit {
     } else {
       this.filteredTodos = this.toDoService.todos;
     }
-    
   }
 
   addToDo(todo) {
@@ -97,11 +93,11 @@ export class ToDoListComponent implements OnInit {
         this.toDoService.todos.push({
           title: todo,
           description: this.description,
-        isImportant: this.important,
-        isCompleted: this.completed,
+          isImportant: this.important,
+          isCompleted: this.completed,
           id: response.name,
           createdAt: Date.now(),
-        })
+        });
         console.log(this.todos);
       });
 

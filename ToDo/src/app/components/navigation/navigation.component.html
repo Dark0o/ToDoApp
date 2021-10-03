@@ -1,6 +1,22 @@
 <div class="container">
-    <h1 *ngIf="hasRoute('/login')">ToDo App</h1>
-<button class="btn" *ngIf="hasRoute('/todos') || this.router.url.includes('todos')" (click)='addNew()'>Add New</button>
+  <h1 *ngIf="hasRoute('/login')">ToDo App</h1>
+  <button
+    class="btn"
+    *ngIf="hasRoute('/todos') || this.router.url.includes('todos')"
+    (click)="addNew()"
+  >
+    Add New
+  </button>
 
-<button class="btn" *ngIf="hasRoute('/todos/new') || hasRoute('/todos') || this.router.url.includes('todos')" (click)='onLogOut()'>LogOut</button>
+  <button
+    class="btn"
+    *ngIf="
+      hasRoute('/todos/new') ||
+      hasRoute('/todos') ||
+      this.router.url.includes('todos')
+    "
+    (click)="onLogOut()"
+  >
+    LogOut
+  </button>
 </div>

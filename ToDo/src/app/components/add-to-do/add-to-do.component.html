@@ -1,20 +1,18 @@
-
 <div class="container">
-    <h1>Add New ToDo</h1>
-<div class="form">
-        <div>
-            <input type="text" placeholder="Title" [(ngModel)]='title'>
-        </div>
-        <div>
-            <input type="text" placeholder="Description" [(ngModel)]='description'>
-        </div>
-        <div class="label">
-            <label>Important</label>
-            <input type="checkbox" [checked]='important' (click)='markImportant()'>
-           
-        </div>
+  <h1>Add New ToDo</h1>
+  <div class="form">
+    <div>
+      <input type="text" placeholder="Title" [(ngModel)]="title" />
     </div>
     <div>
-        <button (click)='addNewToDo()'>Add</button>
+      <input type="text" placeholder="Description" [(ngModel)]="description" />
     </div>
+    <div class="label">
+      <label>Important</label>
+      <input type="checkbox" [checked]="important" (click)="markImportant()" />
+    </div>
+  </div>
+  <div>
+    <button (click)="addNewToDo()">Add</button>
+  </div>
 </div>
