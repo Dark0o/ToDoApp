@@ -11,14 +11,13 @@ import { ToDoService } from '../../services/todo.service';
 export class ToDoListComponent implements OnInit {
   todos;
   completed = false;
-  filteredTodos;
   date;
   important = false;
   description = '';
   toggleImp = false;
   toggleComplete = false;
-  usersToDos = [];
   userId;
+  filteredTodos = [];
 
   private _filter;
 
@@ -31,16 +30,19 @@ export class ToDoListComponent implements OnInit {
     this.performFilter(this.filter);
   }
 
+  get usersToDos() {
+    return this.toDoService.usersToDos;
+  }
   constructor(private toDoService: ToDoService) {
     this.userId = localStorage.getItem('userID');
     console.log(this.userId);
   }
 
   ngOnInit() {
-    this.toDoService.getToDos().subscribe((todos) => {
+    this.toDoService.getToDos(this.userId).subscribe((todos) => {
       console.log(todos);
       //this.todos = todos;
-      this.usersToDos = todos.filter((todo) => todo.userID === this.userId);
+      //this.usersToDos = todos.filter((todo) => todo.userID === this.userId);
       console.log(this.usersToDos);
       this.performFilter();
     });
@@ -68,7 +70,7 @@ export class ToDoListComponent implements OnInit {
         (todo) => todo.isImportant === true
       );
     } else {
-      this.filteredTodos = this.toDoService.todos;
+      this.filteredTodos = this.usersToDos;
     }
   }
 
@@ -80,7 +82,7 @@ export class ToDoListComponent implements OnInit {
         (todo) => todo.isCompleted === true
       );
     } else {
-      this.filteredTodos = this.toDoService.todos;
+      this.filteredTodos = this.usersToDos;
     }
   }
 
@@ -93,16 +95,18 @@ export class ToDoListComponent implements OnInit {
         isImportant: this.important,
         isCompleted: this.completed,
         createdAt: Date.now(),
+        userID: this.userId,
       })
       .subscribe((response) => {
         console.log(response);
-        this.toDoService.todos.push({
+        this.toDoService.usersToDos.push({
           title: todo,
           description: this.description,
           isImportant: this.important,
           isCompleted: this.completed,
           id: response.name,
           createdAt: Date.now(),
+          userID: this.userId,
         });
         console.log(this.todos);
       });
@@ -119,7 +123,7 @@ export class ToDoListComponent implements OnInit {
       (item) => item.title !== todo.title
     );
     this.toDoService.deleteToDo(todo.id);
-    this.toDoService.todos = this.filteredTodos;
+    this.toDoService.usersToDos = this.filteredTodos;
     console.log(this.todos);
   }
 

@@ -12,10 +12,11 @@ export class ToDoService {
   todo;
   url =
     'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json';
+  usersToDos = [];
 
   constructor(private http: HttpClient) {}
 
-  getToDos(): Observable<any> {
+  getToDos(id?): Observable<any> {
     if (this.todos.length > 0) {
       return of(this.todos);
     }
@@ -30,8 +31,9 @@ export class ToDoService {
           //  console.log({...responseData[key]});
 
           this.todos.push({ ...responseData[key], id: key });
+          this.usersToDos = this.todos.filter((todo) => todo.userID === id);
         }
-        console.log(this.todos);
+        console.log(this.usersToDos);
 
         return this.todos;
       })

@@ -12,8 +12,11 @@ export class AddToDoComponent implements OnInit {
   description;
   important = false;
   completed = false;
+  userId;
 
-  constructor(private todoService: ToDoService, private router: Router) {}
+  constructor(private todoService: ToDoService, private router: Router) {
+    this.userId = localStorage.getItem('userID');
+  }
 
   ngOnInit(): void {}
 
@@ -25,15 +28,17 @@ export class AddToDoComponent implements OnInit {
         isImportant: this.important,
         isCompleted: this.completed,
         createdAt: Date.now(),
+        userID: this.userId,
       })
       .subscribe((data) => {
-        this.todoService.todos.push({
+        this.todoService.usersToDos.push({
           id: data.name,
           title: this.title,
           description: this.description,
           isImportant: this.important,
           isCompleted: this.completed,
           createdAt: Date.now(),
+          userID: this.userId,
         });
       });
     this.router.navigate(['todos']);
