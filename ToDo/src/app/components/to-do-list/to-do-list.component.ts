@@ -113,7 +113,7 @@ export class ToDoListComponent implements OnInit {
 
     //console.log(this.todos);
     console.log(this.filteredTodos);
-    console.log(this.toDoService.todos);
+    //console.log(this.toDoService.todos);
   }
 
   onDelete(todo) {

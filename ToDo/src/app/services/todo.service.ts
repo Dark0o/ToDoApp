@@ -8,8 +8,7 @@ import { ITodo } from '../model/todo';
   providedIn: 'root',
 })
 export class ToDoService {
-  todos = [];
-  todo;
+  //todos = [];
   url =
     'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json';
   usersToDos = [];
@@ -17,25 +16,25 @@ export class ToDoService {
   constructor(private http: HttpClient) {}
 
   getToDos(id?): Observable<any> {
-    if (this.todos.length > 0) {
-      return of(this.todos);
-    }
+    // if (this.todos.length > 0) {
+    //   return of(this.todos);
+    // }
 
     return this.http.get(this.url).pipe(
       map((responseData) => {
         //console.log(responseData);
-
+        const todos = [];
         for (const key in responseData) {
           //  console.log(key);
 
           //  console.log({...responseData[key]});
 
-          this.todos.push({ ...responseData[key], id: key });
-          this.usersToDos = this.todos.filter((todo) => todo.userID === id);
+          todos.push({ ...responseData[key], id: key });
+          this.usersToDos = todos.filter((todo) => todo.userID === id);
         }
         console.log(this.usersToDos);
 
-        return this.todos;
+        return todos;
       })
     );
   }

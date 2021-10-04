@@ -42,7 +42,7 @@ export class ToDoDetailsComponent implements OnInit {
 
   deleteTodo() {
     this.todoService.deleteToDo(this.todo.id);
-    this.todoService.todos = this.todoService.todos.filter(
+    this.todoService.usersToDos = this.todoService.usersToDos.filter(
       (todo) => todo.id !== this.todo.id
     );
     this.isDeleted = !this.isDeleted;
