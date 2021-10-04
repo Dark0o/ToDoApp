@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 import { ToDoService } from '../../services/todo.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class ToDoListComponent implements OnInit {
   description = '';
   toggleImp = false;
   toggleComplete = false;
+  usersToDos = [];
+  userId;
 
   private _filter;
 
@@ -28,15 +31,18 @@ export class ToDoListComponent implements OnInit {
     this.performFilter(this.filter);
   }
 
-  constructor(private toDoService: ToDoService) {}
+  constructor(private toDoService: ToDoService) {
+    this.userId = localStorage.getItem('userID');
+    console.log(this.userId);
+  }
 
   ngOnInit() {
     this.toDoService.getToDos().subscribe((todos) => {
       console.log(todos);
-
-      this.todos = todos;
+      //this.todos = todos;
+      this.usersToDos = todos.filter((todo) => todo.userID === this.userId);
+      console.log(this.usersToDos);
       this.performFilter();
-      console.log(this.todos);
     });
   }
 
@@ -123,14 +129,14 @@ export class ToDoListComponent implements OnInit {
 
   performFilter(filterBy?) {
     if (filterBy) {
-      this.filteredTodos = this.todos.filter(
+      this.filteredTodos = this.usersToDos.filter(
         (todo) =>
           todo.title
             .toLocaleLowerCase()
             .indexOf(filterBy.toLocaleLowerCase()) !== -1
       );
     } else {
-      this.filteredTodos = this.todos;
+      this.filteredTodos = this.usersToDos;
       console.log('else happened');
     }
   }

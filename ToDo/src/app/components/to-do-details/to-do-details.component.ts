@@ -33,7 +33,6 @@ export class ToDoDetailsComponent implements OnInit {
           this.todo = todo;
           this.date = DateFormatter.formatDate(this.todo.createdAt);
         });
-      console.log(this.route.snapshot.params.id);
     }
   }
 

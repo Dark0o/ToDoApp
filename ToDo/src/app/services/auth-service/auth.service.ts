@@ -41,6 +41,8 @@ export class AuthService {
 
   logoutUser() {
     this.isLoggedIn = false;
+    //this.userService.loggedInUser = null;
     localStorage.removeItem(this.loggedInUser);
+    localStorage.removeItem('userID');
   }
 }
