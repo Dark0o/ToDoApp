@@ -11,6 +11,13 @@ import { DateFormatter } from 'src/app/DateFormatter';
 export class SharedTodosListComponent implements OnInit {
   todo;
   sharedTodos = [];
+  displayedColumns: string[] = [
+    'title',
+    'description',
+    'createdAt',
+    'fullName',
+  ];
+  dataSource = [];
 
   constructor(
     private todosService: ToDoService,
@@ -32,8 +39,8 @@ export class SharedTodosListComponent implements OnInit {
         return todo;
       });
       console.log(this.sharedTodos);
+      this.dataSource = this.sharedTodos;
+      console.log(this.dataSource);
     });
   }
-
-  onAddToDo(todo) {}
 }
