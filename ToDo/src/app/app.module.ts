@@ -13,6 +13,7 @@ import { ToDoDetailsComponent } from './components//to-do-details/to-do-details.
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AddToDoComponent } from './components/add-to-do/add-to-do.component';
 import { SharedTodosListComponent } from './components/shared-todos-list/shared-todos-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { SharedTodosListComponent } from './components/shared-todos-list/shared-
     AddToDoComponent,
     SharedTodosListComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule, RoutingModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, RoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
