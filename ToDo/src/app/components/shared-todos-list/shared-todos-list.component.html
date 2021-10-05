@@ -1,3 +1,10 @@
 <div class="container">
   <h3>Shared ToDos list</h3>
+  <div class="add-todo">
+    <input type="text" placeholder="Add ToDo..." />
+    <button (click)="onAddToDo(todo)">Add</button>
+  </div>
+  <div *ngFor="let todo of sharedTodos">
+    <div>{{ todo.title }}, {{ todo.description }}, {{ todo.createdAt }}</div>
+  </div>
 </div>
