@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ToDoDetailsComponent } from './components//to-do-details/to-do-details.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AddToDoComponent } from './components/add-to-do/add-to-do.component';
+import { SharedTodosListComponent } from './components/shared-todos-list/shared-todos-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddToDoComponent } from './components/add-to-do/add-to-do.component';
     ToDoDetailsComponent,
     NavigationComponent,
     AddToDoComponent,
+    SharedTodosListComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, RoutingModule],
   providers: [],

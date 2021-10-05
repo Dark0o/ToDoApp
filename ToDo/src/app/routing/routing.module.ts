@@ -5,6 +5,7 @@ import { AuthGuardService } from '../services/auth-service/auth-guard.service';
 import { ToDoDetailsComponent } from '../components/to-do-details/to-do-details.component';
 import { ToDoListComponent } from '../components/to-do-list/to-do-list.component';
 import { AddToDoComponent } from '../components/add-to-do/add-to-do.component';
+import { SharedTodosListComponent } from '../components/shared-todos-list/shared-todos-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +18,11 @@ const routes: Routes = [
   {
     path: 'todos/new',
     component: AddToDoComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'todos/shared',
+    component: SharedTodosListComponent,
     canActivate: [AuthGuardService],
   },
   {

@@ -90,6 +90,7 @@ export class ToDoListComponent implements OnInit {
     console.log(todo);
     this.toDoService
       .addToDo({
+        id: null,
         title: todo,
         description: this.description,
         isImportant: this.important,

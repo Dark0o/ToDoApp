@@ -23,6 +23,7 @@ export class AddToDoComponent implements OnInit {
   addNewToDo() {
     this.todoService
       .addToDo({
+        id: null,
         title: this.title,
         description: this.description,
         isImportant: this.important,
