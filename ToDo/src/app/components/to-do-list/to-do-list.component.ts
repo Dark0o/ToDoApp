@@ -14,6 +14,7 @@ export class ToDoListComponent implements OnInit {
   date;
   important = false;
   description = '';
+  public = false;
   toggleImp = false;
   toggleComplete = false;
   userId;
@@ -95,6 +96,7 @@ export class ToDoListComponent implements OnInit {
         description: this.description,
         isImportant: this.important,
         isCompleted: this.completed,
+        isPublic: this.public,
         createdAt: Date.now(),
         userID: this.userId,
       })

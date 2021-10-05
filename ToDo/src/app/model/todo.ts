@@ -4,6 +4,7 @@ export interface ITodo {
   description: string;
   isImportant: boolean;
   isCompleted: boolean;
+  isPublic: boolean;
   createdAt: number;
   userID: string;
 }

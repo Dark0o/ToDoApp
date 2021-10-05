@@ -12,6 +12,7 @@ export class AddToDoComponent implements OnInit {
   description;
   important = false;
   completed = false;
+  public = false;
   userId;
 
   constructor(private todoService: ToDoService, private router: Router) {
@@ -28,6 +29,7 @@ export class AddToDoComponent implements OnInit {
         description: this.description,
         isImportant: this.important,
         isCompleted: this.completed,
+        isPublic: this.public,
         createdAt: Date.now(),
         userID: this.userId,
       })
