@@ -5,6 +5,9 @@
     <button (click)="onAddToDo(todo)">Add</button>
   </div>
   <div *ngFor="let todo of sharedTodos">
-    <div>{{ todo.title }}, {{ todo.description }}, {{ todo.createdAt }}</div>
+    <div>
+      {{ todo.title }}, {{ todo.description }}, {{ todo.createdAt }},
+      {{ todo.fullName }}
+    </div>
   </div>
 </div>
