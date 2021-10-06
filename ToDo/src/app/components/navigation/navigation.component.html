@@ -7,7 +7,9 @@
   >
     Add New
   </button>
-  <a [routerLink]="['/todos/shared']"
+  <a
+    *ngIf="hasRoute('/todos') || hasRoute('/todos/new')"
+    [routerLink]="['/todos/shared']"
     ><button class="btn">Show Shared</button></a
   >
 
