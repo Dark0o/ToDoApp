@@ -17,7 +17,6 @@ export class SharedTodosListComponent implements OnInit {
     'createdAt',
     'fullName',
   ];
-  dataSource = [];
 
   constructor(
     private todosService: ToDoService,
@@ -44,8 +43,6 @@ export class SharedTodosListComponent implements OnInit {
         return todo;
       });
       console.log(this.sharedTodos);
-      this.dataSource = this.sharedTodos;
-      console.log(this.dataSource);
     });
   }
 }
