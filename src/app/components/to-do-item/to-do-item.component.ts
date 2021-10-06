@@ -1,12 +1,12 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { DateFormatter } from 'src/app/DateFormatter';
+import { ThrowStmt } from "@angular/compiler";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Router } from "@angular/router";
+import { DateFormatter } from "src/app/date-formatter";
 
 @Component({
-  selector: 'app-to-do-item',
-  templateUrl: './to-do-item.component.html',
-  styleUrls: ['./to-do-item.component.scss'],
+  selector: "app-to-do-item",
+  templateUrl: "./to-do-item.component.html",
+  styleUrls: ["./to-do-item.component.scss"],
 })
 export class ToDoItemComponent implements OnInit {
   @Input() todoItem;

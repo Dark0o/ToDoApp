@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ToDoService } from 'src/app/services/todo.service';
-import { UsersService } from 'src/app/services/users.service';
-import { DateFormatter } from 'src/app/DateFormatter';
+import { Component, OnInit } from "@angular/core";
+import { ToDoService } from "src/app/services/todo.service";
+import { UsersService } from "src/app/services/users.service";
+import { DateFormatter } from "src/app/date-formatter";
 
 @Component({
-  selector: 'app-shared-todos-list',
-  templateUrl: './shared-todos-list.component.html',
-  styleUrls: ['./shared-todos-list.component.scss'],
+  selector: "app-shared-todos-list",
+  templateUrl: "./shared-todos-list.component.html",
+  styleUrls: ["./shared-todos-list.component.scss"],
 })
 export class SharedTodosListComponent implements OnInit {
   todo;
   sharedTodos = [];
   displayedColumns: string[] = [
-    'title',
-    'description',
-    'createdAt',
-    'fullName',
+    "title",
+    "description",
+    "createdAt",
+    "fullName",
   ];
 
   constructor(
