@@ -125,13 +125,13 @@ export class ToDoListComponent implements OnInit {
     this.filteredTodos = this.filteredTodos.filter(
       (item) => item.title !== todo.title
     );
-    this.toDoService.deleteToDo(todo.id);
+    this.toDoService.deleteToDo(todo.id).subscribe();
     this.toDoService.usersToDos = this.filteredTodos;
     console.log(this.todos);
   }
 
   onItemChecked(todo) {
-    this.toDoService.updateToDo(todo);
+    this.toDoService.updateToDo(todo).subscribe();
   }
 
   performFilter(filterBy?) {

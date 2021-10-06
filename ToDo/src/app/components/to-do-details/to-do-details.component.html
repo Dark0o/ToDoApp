@@ -1,10 +1,9 @@
-<div *ngIf="isDeleted === true" class="delete">
-  <h1>ToDo Item Deleted</h1>
-  <button (click)="navigateBack()">Back to the list</button>
+<div *ngIf="deleteStatus" class="delete">
+  <h3>{{ deleteStatus }}</h3>
 </div>
 
-<div *ngIf="isDeleted === false" class="container">
-  <h1>ToDo item details</h1>
+<div *ngIf="!deleteStatus" class="container">
+  <h1>ToDo Item Details</h1>
   <table>
     <tr>
       <td>Title:</td>
@@ -30,11 +29,17 @@
   <div class="btns">
     <button (click)="navigateBack()">Back to the list</button>
     <button *ngIf="showEdit !== true" (click)="onEdit()">Edit</button>
+    <button *ngIf="showEdit === true" (click)="cancelEditing()">
+      Cancel Edit
+    </button>
     <button (click)="deleteTodo()">Delete</button>
   </div>
 
   <div>
-    <div *ngIf="showEdit" class="form">
+    <div *ngIf="editStatus">
+      <h3>{{ editStatus }}</h3>
+    </div>
+    <div *ngIf="showEdit && editStatus === undefined" class="form">
       <h3>Edit Todo</h3>
       <div>
         <input type="text" placeholder="Title" [(ngModel)]="todo.title" />

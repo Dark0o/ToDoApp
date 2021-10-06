@@ -8,12 +8,13 @@ import { ToDoService } from 'src/app/services/todo.service';
   styleUrls: ['./add-to-do.component.scss'],
 })
 export class AddToDoComponent implements OnInit {
-  title;
-  description;
-  important = false;
-  completed = false;
-  public = false;
-  userId;
+  title: string;
+  description: string;
+  important: boolean = false;
+  completed: boolean = false;
+  public: boolean = false;
+  userId: string;
+  addingNewToDoStatus: string;
 
   constructor(private todoService: ToDoService, private router: Router) {
     this.userId = localStorage.getItem('userID');
@@ -22,6 +23,7 @@ export class AddToDoComponent implements OnInit {
   ngOnInit(): void {}
 
   addNewToDo() {
+    this.addingNewToDoStatus = 'Adding...';
     this.todoService
       .addToDo({
         id: null,
@@ -44,8 +46,11 @@ export class AddToDoComponent implements OnInit {
           createdAt: Date.now(),
           userID: this.userId,
         });
+        this.addingNewToDoStatus = 'Added!';
       });
-    this.router.navigate(['todos']);
+    setTimeout(() => {
+      this.router.navigate(['todos']);
+    }, 3000);
   }
 
   markImportant() {

@@ -1,4 +1,8 @@
-<div class="container">
+<div class="statusMessage" *ngIf="addingNewToDoStatus">
+  <h3>{{ addingNewToDoStatus }}</h3>
+</div>
+
+<div *ngIf="!addingNewToDoStatus" class="container">
   <h3>Add New ToDo</h3>
   <div class="form">
     <div>

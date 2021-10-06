@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DateFormatter } from 'src/app/DateFormatter';
+import { ITodo } from 'src/app/model/todo';
 import { ToDoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -10,9 +11,11 @@ import { ToDoService } from 'src/app/services/todo.service';
 })
 export class ToDoDetailsComponent implements OnInit {
   todo;
-  date;
-  showEdit = false;
-  isDeleted = false;
+  date: string;
+  showEdit: boolean = false;
+  isDeleted: boolean = false;
+  editStatus: string;
+  deleteStatus: string;
 
   constructor(
     private router: Router,
@@ -41,10 +44,16 @@ export class ToDoDetailsComponent implements OnInit {
   }
 
   deleteTodo() {
-    this.todoService.deleteToDo(this.todo.id);
+    this.deleteStatus = 'Deleteing...';
     this.todoService.usersToDos = this.todoService.usersToDos.filter(
       (todo) => todo.id !== this.todo.id
     );
+    this.todoService.deleteToDo(this.todo.id).subscribe(() => {
+      this.deleteStatus = 'ToDo Deleted!';
+      setTimeout(() => {
+        this.router.navigate(['todos']);
+      }, 3000);
+    });
     this.isDeleted = !this.isDeleted;
   }
 
@@ -60,12 +69,23 @@ export class ToDoDetailsComponent implements OnInit {
   }
 
   edit() {
-    this.todoService.updateToDo(this.todo);
+    this.editStatus = 'Editing...';
+    this.todoService.updateToDo(this.todo).subscribe(() => {
+      this.editStatus = 'Edited!';
+      setInterval(() => {
+        this.showEdit = false;
+        this.editStatus = undefined;
+      }, 3000);
+    });
     this.showEdit = false;
     console.log('saved');
   }
 
   onEdit() {
     this.showEdit = true;
+  }
+
+  cancelEditing() {
+    this.showEdit = false;
   }
 }

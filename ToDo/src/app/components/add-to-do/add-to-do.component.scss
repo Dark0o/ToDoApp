@@ -15,6 +15,7 @@
 }
 
 button {
+  cursor: pointer;
   margin-top: 5px;
 }
 
@@ -26,6 +27,7 @@ button {
   vertical-align: middle;
 }
 
-button {
-  cursor: pointer;
+.statusMessage {
+  display: flex;
+  justify-content: center;
 }

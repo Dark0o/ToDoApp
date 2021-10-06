@@ -54,19 +54,15 @@ export class ToDoService {
   updateToDo(todo) {
     console.log(todo);
 
-    this.http
-      .patch(
-        `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${todo.id}.json`,
-        todo
-      )
-      .subscribe();
+    return this.http.patch(
+      `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${todo.id}.json`,
+      todo
+    );
   }
 
   deleteToDo(id) {
-    this.http
-      .delete(
-        `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`
-      )
-      .subscribe();
+    return this.http.delete(
+      `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`
+    );
   }
 }
