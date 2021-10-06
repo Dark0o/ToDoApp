@@ -25,6 +25,11 @@ export class SharedTodosListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.usersService.users.length === 0) {
+      this.usersService.getSignedUpUsers().subscribe((users) => {
+        this.usersService.users = users;
+      });
+    }
     this.todosService.getToDos().subscribe((todos) => {
       this.sharedTodos = todos.filter((todo) => todo.isPublic === true);
       this.sharedTodos.map((todo) => {

@@ -15,6 +15,7 @@ export class UsersService {
 
   getSignedUpUsers(): Observable<any> {
     if (this.users.length > 0) {
+      console.log(this.users);
       return of(this.users);
     }
     return this.http.get(this.url).pipe(
