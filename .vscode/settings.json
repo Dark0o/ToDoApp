@@ -22,7 +22,7 @@
         "editor.cursorBlinking": "phase",
         "editor.cursorSmoothCaretAnimation": true,
         "editor.fontFamily": "Source Code Pro, Menlo, Monaco, 'Courier New', monospace",
-        "editor.fontSize": 14,
+        "editor.fontSize": 12,
         "editor.formatOnSave": true,
         "editor.smoothScrolling": true,
         "files.exclude": {
@@ -36,7 +36,7 @@
         "prettier.singleQuote": true,
         "telemetry.enableCrashReporter": false,
         "telemetry.enableTelemetry": false,
-        "terminal.integrated.fontSize": 16,
+        "terminal.integrated.fontSize": 12,
         "workbench.editor.enablePreview": false,
         "workbench.editor.highlightModifiedTabs": true,
         "workbench.fontAliasing": "antialiased",
