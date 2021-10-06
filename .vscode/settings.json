@@ -46,4 +46,5 @@
         "git.confirmSync": false,
         "editor.renderWhitespace": "all",
         "typescript.updateImportsOnFileMove.enabled": "always",
+        "git.ignoreLimitWarning": true,
     }
