@@ -55,6 +55,9 @@ export class ToDoDetailsComponent implements OnInit {
   markDone() {
     this.todo.isCompleted = !this.todo.isCompleted;
   }
+  markPublic() {
+    this.todo.isPublic = !this.todo.isPublic;
+  }
 
   edit() {
     this.todoService.updateToDo(this.todo);

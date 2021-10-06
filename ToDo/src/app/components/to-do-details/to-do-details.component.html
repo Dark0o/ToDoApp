@@ -55,6 +55,14 @@
         />
       </div>
       <div class="label">
+        <label>Public</label>
+        <input
+          type="checkbox"
+          [checked]="todo.isPublic"
+          (click)="markPublic()"
+        />
+      </div>
+      <div class="label">
         <label>Done</label>
         <input
           type="checkbox"

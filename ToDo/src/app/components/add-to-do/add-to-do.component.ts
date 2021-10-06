@@ -40,6 +40,7 @@ export class AddToDoComponent implements OnInit {
           description: this.description,
           isImportant: this.important,
           isCompleted: this.completed,
+          isPublic: this.public,
           createdAt: Date.now(),
           userID: this.userId,
         });
@@ -50,5 +51,8 @@ export class AddToDoComponent implements OnInit {
   markImportant() {
     this.important = !this.important;
     console.log(this.important);
+  }
+  markPublic() {
+    this.public = !this.public;
   }
 }

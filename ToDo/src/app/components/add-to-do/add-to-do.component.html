@@ -11,6 +11,10 @@
       <label>Important</label>
       <input type="checkbox" [checked]="important" (click)="markImportant()" />
     </div>
+    <div class="label">
+      <label>Public</label>
+      <input type="checkbox" [checked]="public" (click)="markPublic()" />
+    </div>
   </div>
   <div>
     <button (click)="addNewToDo()">Add</button>
