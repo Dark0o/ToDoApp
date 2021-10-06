@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DateFormatter } from 'src/app/date-formatter';
@@ -26,7 +25,6 @@ export class ToDoItemComponent implements OnInit {
 
   toggleCheckbox(todo) {
     todo.isCompleted = !todo.isCompleted;
-
     this.itemChecked.emit(todo);
   }
 

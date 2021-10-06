@@ -17,7 +17,7 @@ export class ToDoListComponent implements OnInit {
   public = false;
   toggleImp = false;
   toggleComplete = false;
-  userId;
+  userId: string;
   filteredTodos = [];
 
   private _filter;
@@ -31,7 +31,7 @@ export class ToDoListComponent implements OnInit {
     this.performFilter(this.filter);
   }
 
-  get usersToDos() {
+  get usersTodos() {
     return this.toDoService.usersTodos;
   }
   constructor(private toDoService: ToDoService) {
@@ -40,11 +40,9 @@ export class ToDoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.toDoService.getToDos(this.userId).subscribe((todos) => {
+    this.toDoService.getTodos(this.userId).subscribe((todos) => {
       console.log(todos);
-      //this.todos = todos;
-      //this.usersToDos = todos.filter((todo) => todo.userID === this.userId);
-      console.log(this.usersToDos);
+      console.log(this.usersTodos);
       this.performFilter();
     });
   }
@@ -69,7 +67,7 @@ export class ToDoListComponent implements OnInit {
     if (this.toggleImp === true) {
       this.filteredTodos = this.filteredTodos.filter((todo) => todo.isImportant === true);
     } else {
-      this.filteredTodos = this.usersToDos;
+      this.filteredTodos = this.usersTodos;
     }
   }
 
@@ -79,14 +77,14 @@ export class ToDoListComponent implements OnInit {
     if (this.toggleComplete === true) {
       this.filteredTodos = this.filteredTodos.filter((todo) => todo.isCompleted === true);
     } else {
-      this.filteredTodos = this.usersToDos;
+      this.filteredTodos = this.usersTodos;
     }
   }
 
   addToDo(todo) {
     console.log(todo);
     this.toDoService
-      .addToDo({
+      .addTodo({
         id: null,
         title: todo,
         description: this.description,
@@ -109,32 +107,29 @@ export class ToDoListComponent implements OnInit {
         });
         console.log(this.todos);
       });
-
-    //console.log(this.todos);
     console.log(this.filteredTodos);
-    //console.log(this.toDoService.todos);
   }
 
   onDelete(todo) {
     console.log(todo);
     console.log('delete');
     this.filteredTodos = this.filteredTodos.filter((item) => item.title !== todo.title);
-    this.toDoService.deleteToDo(todo.id).subscribe();
+    this.toDoService.deleteTodo(todo.id).subscribe();
     this.toDoService.usersTodos = this.filteredTodos;
     console.log(this.todos);
   }
 
   onItemChecked(todo) {
-    this.toDoService.updateToDo(todo).subscribe();
+    this.toDoService.updateTodo(todo).subscribe();
   }
 
   performFilter(filterBy?) {
     if (filterBy) {
-      this.filteredTodos = this.usersToDos.filter(
+      this.filteredTodos = this.usersTodos.filter(
         (todo) => todo.title.toLocaleLowerCase().indexOf(filterBy.toLocaleLowerCase()) !== -1
       );
     } else {
-      this.filteredTodos = this.usersToDos;
+      this.filteredTodos = this.usersTodos;
       console.log('else happened');
     }
   }

@@ -13,14 +13,13 @@ export class ToDoService {
 
   constructor(private http: HttpClient) {}
 
-  getToDos(id?): Observable<any> {
+  getTodos(id?): Observable<any> {
     // if (this.todos.length > 0) {
     //   return of(this.todos);
     // }
 
     return this.http.get(this.url).pipe(
       map((responseData) => {
-        //console.log(responseData);
         const todos = [];
         for (const key in responseData) {
           todos.push({ ...responseData[key], id: key });
@@ -33,17 +32,15 @@ export class ToDoService {
     );
   }
 
-  getToDoById(id) {
+  getTodoById(id) {
     return this.http.get(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`);
   }
 
-  addToDo(todo: ITodo): Observable<any> {
-    console.log(todo);
-
+  addTodo(todo: ITodo): Observable<any> {
     return this.http.post(this.url, todo);
   }
 
-  updateToDo(todo) {
+  updateTodo(todo) {
     console.log(todo);
 
     return this.http.patch(
@@ -52,7 +49,7 @@ export class ToDoService {
     );
   }
 
-  deleteToDo(id) {
+  deleteTodo(id) {
     return this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`);
   }
 }

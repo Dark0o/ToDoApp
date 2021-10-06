@@ -14,7 +14,7 @@ export class AddToDoComponent implements OnInit {
   completed: boolean = false;
   public: boolean = false;
   userId: string;
-  addingNewToDoStatus: string;
+  addingNewTodoStatus: string;
 
   constructor(private todoService: ToDoService, private router: Router) {
     this.userId = localStorage.getItem('userID');
@@ -22,10 +22,10 @@ export class AddToDoComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addNewToDo() {
-    this.addingNewToDoStatus = 'Adding...';
+  addNewTodo() {
+    this.addingNewTodoStatus = 'Adding...';
     this.todoService
-      .addToDo({
+      .addTodo({
         id: null,
         title: this.title,
         description: this.description,
@@ -46,7 +46,7 @@ export class AddToDoComponent implements OnInit {
           createdAt: Date.now(),
           userID: this.userId,
         });
-        this.addingNewToDoStatus = 'Added!';
+        this.addingNewTodoStatus = 'Added!';
       });
     setTimeout(() => {
       this.router.navigate(['todos']);

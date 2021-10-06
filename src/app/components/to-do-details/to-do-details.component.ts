@@ -25,7 +25,7 @@ export class ToDoDetailsComponent implements OnInit {
     if (this.todo) {
       this.date = DateFormatter.formatDate(this.todo.createdAt);
     } else {
-      this.todoService.getToDoById(this.route.snapshot.params.id).subscribe((todo) => {
+      this.todoService.getTodoById(this.route.snapshot.params.id).subscribe((todo) => {
         this.todo = todo;
         this.date = DateFormatter.formatDate(this.todo.createdAt);
       });
@@ -37,10 +37,10 @@ export class ToDoDetailsComponent implements OnInit {
   }
 
   deleteTodo() {
-    this.deleteStatus = 'Deleteing...';
+    this.deleteStatus = 'Deleting...';
     this.todoService.usersTodos = this.todoService.usersTodos.filter((todo) => todo.id !== this.todo.id);
-    this.todoService.deleteToDo(this.todo.id).subscribe(() => {
-      this.deleteStatus = 'ToDo Deleted!';
+    this.todoService.deleteTodo(this.todo.id).subscribe(() => {
+      this.deleteStatus = 'Todo Deleted!';
       setTimeout(() => {
         this.router.navigate(['todos']);
       }, 3000);
@@ -60,7 +60,7 @@ export class ToDoDetailsComponent implements OnInit {
 
   edit() {
     this.editStatus = 'Editing...';
-    this.todoService.updateToDo(this.todo).subscribe(() => {
+    this.todoService.updateTodo(this.todo).subscribe(() => {
       this.editStatus = 'Edited!';
       setInterval(() => {
         this.showEdit = false;

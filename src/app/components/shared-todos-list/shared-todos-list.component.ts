@@ -21,7 +21,7 @@ export class SharedTodosListComponent implements OnInit {
         this.usersService.users = users;
       });
     }
-    this.todosService.getToDos().subscribe((todos) => {
+    this.todosService.getTodos().subscribe((todos) => {
       this.sharedTodos = todos.filter((todo) => todo.isPublic === true);
       this.sharedTodos.map((todo) => {
         let foundUser = this.usersService.users.find((user) => user.id === todo.userID);
