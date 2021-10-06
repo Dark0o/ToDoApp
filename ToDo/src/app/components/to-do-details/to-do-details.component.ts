@@ -13,7 +13,6 @@ export class ToDoDetailsComponent implements OnInit {
   todo;
   date: string;
   showEdit: boolean = false;
-  isDeleted: boolean = false;
   editStatus: string;
   deleteStatus: string;
 
@@ -54,7 +53,6 @@ export class ToDoDetailsComponent implements OnInit {
         this.router.navigate(['todos']);
       }, 3000);
     });
-    this.isDeleted = !this.isDeleted;
   }
 
   markImportant() {

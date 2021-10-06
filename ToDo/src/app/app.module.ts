@@ -4,17 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './routing/routing.module';
 import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
-import { ToDoInputComponent } from './components/to-do-input/to-do-input.component';
-import { ToDoItemComponent } from './components//to-do-item/to-do-item.component';
-import { LoginComponent } from './components/login/login.component';
-import { ToDoDetailsComponent } from './components//to-do-details/to-do-details.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { AddToDoComponent } from './components/add-to-do/add-to-do.component';
-import { SharedTodosListComponent } from './components/shared-todos-list/shared-todos-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  ToDoListComponent,
+  ToDoInputComponent,
+  ToDoItemComponent,
+  LoginComponent,
+  ToDoDetailsComponent,
+  NavigationComponent,
+  AddToDoComponent,
+  SharedTodosListComponent,
+} from './components/index';
 
 @NgModule({
   declarations: [
