@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ITodo } from '../model/todo';
 
@@ -8,10 +8,8 @@ import { ITodo } from '../model/todo';
   providedIn: 'root',
 })
 export class ToDoService {
-  //todos = [];
-  url =
-    'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json';
-  usersToDos = [];
+  url = 'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos.json';
+  usersTodos = [];
 
   constructor(private http: HttpClient) {}
 
@@ -25,14 +23,10 @@ export class ToDoService {
         //console.log(responseData);
         const todos = [];
         for (const key in responseData) {
-          //  console.log(key);
-
-          //  console.log({...responseData[key]});
-
           todos.push({ ...responseData[key], id: key });
-          this.usersToDos = todos.filter((todo) => todo.userID === id);
+          this.usersTodos = todos.filter((todo) => todo.userID === id);
         }
-        console.log(this.usersToDos);
+        console.log(this.usersTodos);
 
         return todos;
       })
@@ -40,9 +34,7 @@ export class ToDoService {
   }
 
   getToDoById(id) {
-    return this.http.get(
-      `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`
-    );
+    return this.http.get(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`);
   }
 
   addToDo(todo: ITodo): Observable<any> {
@@ -61,8 +53,6 @@ export class ToDoService {
   }
 
   deleteToDo(id) {
-    return this.http.delete(
-      `https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`
-    );
+    return this.http.delete(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`);
   }
 }

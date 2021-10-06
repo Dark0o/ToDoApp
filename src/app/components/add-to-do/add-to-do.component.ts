@@ -36,7 +36,7 @@ export class AddToDoComponent implements OnInit {
         userID: this.userId,
       })
       .subscribe((data) => {
-        this.todoService.usersToDos.push({
+        this.todoService.usersTodos.push({
           id: data.name,
           title: this.title,
           description: this.description,

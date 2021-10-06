@@ -32,7 +32,7 @@ export class ToDoListComponent implements OnInit {
   }
 
   get usersToDos() {
-    return this.toDoService.usersToDos;
+    return this.toDoService.usersTodos;
   }
   constructor(private toDoService: ToDoService) {
     this.userId = localStorage.getItem('userID');
@@ -67,9 +67,7 @@ export class ToDoListComponent implements OnInit {
     this.toggleImp = !this.toggleImp;
 
     if (this.toggleImp === true) {
-      this.filteredTodos = this.filteredTodos.filter(
-        (todo) => todo.isImportant === true
-      );
+      this.filteredTodos = this.filteredTodos.filter((todo) => todo.isImportant === true);
     } else {
       this.filteredTodos = this.usersToDos;
     }
@@ -79,9 +77,7 @@ export class ToDoListComponent implements OnInit {
     this.toggleComplete = !this.toggleComplete;
 
     if (this.toggleComplete === true) {
-      this.filteredTodos = this.filteredTodos.filter(
-        (todo) => todo.isCompleted === true
-      );
+      this.filteredTodos = this.filteredTodos.filter((todo) => todo.isCompleted === true);
     } else {
       this.filteredTodos = this.usersToDos;
     }
@@ -102,7 +98,7 @@ export class ToDoListComponent implements OnInit {
       })
       .subscribe((response) => {
         console.log(response);
-        this.toDoService.usersToDos.push({
+        this.toDoService.usersTodos.push({
           title: todo,
           description: this.description,
           isImportant: this.important,
@@ -122,11 +118,9 @@ export class ToDoListComponent implements OnInit {
   onDelete(todo) {
     console.log(todo);
     console.log('delete');
-    this.filteredTodos = this.filteredTodos.filter(
-      (item) => item.title !== todo.title
-    );
+    this.filteredTodos = this.filteredTodos.filter((item) => item.title !== todo.title);
     this.toDoService.deleteToDo(todo.id).subscribe();
-    this.toDoService.usersToDos = this.filteredTodos;
+    this.toDoService.usersTodos = this.filteredTodos;
     console.log(this.todos);
   }
 
@@ -137,10 +131,7 @@ export class ToDoListComponent implements OnInit {
   performFilter(filterBy?) {
     if (filterBy) {
       this.filteredTodos = this.usersToDos.filter(
-        (todo) =>
-          todo.title
-            .toLocaleLowerCase()
-            .indexOf(filterBy.toLocaleLowerCase()) !== -1
+        (todo) => todo.title.toLocaleLowerCase().indexOf(filterBy.toLocaleLowerCase()) !== -1
       );
     } else {
       this.filteredTodos = this.usersToDos;
