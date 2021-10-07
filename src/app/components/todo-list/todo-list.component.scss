@@ -23,3 +23,9 @@ label {
 .sorting input {
   cursor: pointer;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

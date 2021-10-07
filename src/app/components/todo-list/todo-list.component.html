@@ -1,4 +1,8 @@
-<div class="wrapper">
+<div *ngIf="loadingState === true" class="loading">
+  <h3>Loading...</h3>
+</div>
+
+<div *ngIf="loadingState === false" class="wrapper">
   <h1>ToDo List</h1>
   <input type="text" [(ngModel)]="filter" placeholder="Search ToDo..." />
   <div class="sorting">

@@ -1,4 +1,8 @@
-<div class="container">
+<div *ngIf="loadingState === true" class="loading">
+  <h3>Loading...</h3>
+</div>
+
+<div *ngIf="loadingState === false" class="container">
   <h3>Shared ToDos list</h3>
 
   <table mat-table [dataSource]="sharedTodos" class="mat-elevation-z8">

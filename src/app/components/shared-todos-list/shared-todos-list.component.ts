@@ -12,10 +12,12 @@ export class SharedTodosListComponent implements OnInit {
   todo;
   sharedTodos = [];
   displayedColumns: string[] = ['title', 'description', 'createdAt', 'fullName'];
+  loadingState: boolean = false;
 
   constructor(private todosService: ToDoService, private usersService: UsersService) {}
 
   ngOnInit(): void {
+    this.loadingState = true;
     if (this.usersService.users.length === 0) {
       this.usersService.getSignedUpUsers().subscribe((users) => {
         this.usersService.users = users;
@@ -29,6 +31,7 @@ export class SharedTodosListComponent implements OnInit {
           todo.fullName = foundUser.fullName;
         }
         todo.createdAt = DateFormatter.formatDate(todo.createdAt);
+        this.loadingState = false;
         return todo;
       });
       console.log(this.sharedTodos);

@@ -18,9 +18,9 @@ export class ToDoListComponent implements OnInit {
   toggleImp = false;
   toggleComplete = false;
   userId: string;
+  loadingState: boolean = false;
   filteredTodos = [];
   sortingOrder: string;
-
   titleFlag: boolean = false;
   dateFlag: boolean = false;
 
@@ -44,10 +44,12 @@ export class ToDoListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadingState = true;
     this.toDoService.getTodos(this.userId).subscribe((todos) => {
       console.log(todos);
       console.log(this.usersTodos);
       this.performFilter();
+      this.loadingState = false;
     });
   }
 
@@ -62,10 +64,14 @@ export class ToDoListComponent implements OnInit {
       this.titleFlag = false;
       this.dateFlag = true;
       console.log(this.sortingOrder);
-
       this.sortNewest(this.filteredTodos);
       this.sortingOrder = 'Ascending';
       console.log('this happened');
+    }
+    if (event.target.value === '-') {
+      this.titleFlag = false;
+      this.dateFlag = false;
+      this.sortByName(this.filteredTodos);
     }
   }
 
@@ -83,7 +89,6 @@ export class ToDoListComponent implements OnInit {
 
   toggleSortingByDate() {
     console.log('click');
-
     if (this.sortingOrder === 'Descending') {
       this.sortNewest(this.filteredTodos);
       this.sortingOrder = 'Ascending';
