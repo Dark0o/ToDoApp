@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { ToDoService } from 'src/app/services/todo.service';
 
 @Component({
-  selector: 'app-add-to-do',
-  templateUrl: './add-to-do.component.html',
-  styleUrls: ['./add-to-do.component.scss'],
+  selector: 'app-add-todo',
+  templateUrl: './add-todo.component.html',
+  styleUrls: ['./add-todo.component.scss'],
 })
 export class AddToDoComponent implements OnInit {
   title: string;

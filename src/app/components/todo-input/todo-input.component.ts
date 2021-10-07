@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-to-do-input',
-  templateUrl: './to-do-input.component.html',
-  styleUrls: ['./to-do-input.component.scss'],
+  templateUrl: './todo-input.component.html',
+  styleUrls: ['./todo-input.component.scss'],
 })
 export class ToDoInputComponent {
   todo;

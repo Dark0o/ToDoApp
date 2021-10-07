@@ -5,8 +5,8 @@ import { DateFormatter } from 'src/app/date-formatter';
 
 @Component({
   selector: 'app-to-do-item',
-  templateUrl: './to-do-item.component.html',
-  styleUrls: ['./to-do-item.component.scss'],
+  templateUrl: './todo-item.component.html',
+  styleUrls: ['./todo-item.component.scss'],
 })
 export class ToDoItemComponent implements OnInit {
   @Input() todoItem;
