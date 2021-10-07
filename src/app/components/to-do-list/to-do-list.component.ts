@@ -19,6 +19,10 @@ export class ToDoListComponent implements OnInit {
   toggleComplete = false;
   userId: string;
   filteredTodos = [];
+  sortingOrder: string;
+
+  titleFlag: boolean = false;
+  dateFlag: boolean = false;
 
   private _filter;
 
@@ -50,13 +54,41 @@ export class ToDoListComponent implements OnInit {
   selectChangeHandler(event) {
     console.log(event.target.value);
     if (event.target.value === 'name') {
+      this.titleFlag = true;
+      this.sortingOrder = 'Ascending';
       this.sortByName(this.filteredTodos);
     }
-    if (event.target.value === 'newest') {
+    if (event.target.value === 'date') {
+      this.titleFlag = false;
+      this.dateFlag = true;
+      console.log(this.sortingOrder);
+
       this.sortNewest(this.filteredTodos);
+      this.sortingOrder = 'Ascending';
       console.log('this happened');
     }
-    if (event.target.value === 'oldest') {
+  }
+
+  toggleSorting() {
+    console.log('click');
+
+    if (this.sortingOrder === 'Descending') {
+      this.sortByName(this.filteredTodos);
+      this.sortingOrder = 'Ascending';
+    } else if (this.sortingOrder === 'Ascending') {
+      this.sortingOrder = 'Descending';
+      this.sortByNameDesc(this.filteredTodos);
+    }
+  }
+
+  toggleSortingByDate() {
+    console.log('click');
+
+    if (this.sortingOrder === 'Descending') {
+      this.sortNewest(this.filteredTodos);
+      this.sortingOrder = 'Ascending';
+    } else if (this.sortingOrder === 'Ascending') {
+      this.sortingOrder = 'Descending';
       this.sortOldest(this.filteredTodos);
     }
   }
@@ -137,6 +169,14 @@ export class ToDoListComponent implements OnInit {
   sortByName(arr) {
     arr.sort((a, b) => {
       return a.title.localeCompare(b.title);
+    });
+  }
+
+  sortByNameDesc(arr) {
+    arr.sort((a, b) => {
+      if (a.title > b.title) return -1;
+      if (a.title < b.title) return 1;
+      return 0;
     });
   }
 

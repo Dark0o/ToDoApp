@@ -11,10 +11,11 @@
       <select (change)="selectChangeHandler($event)">
         <option value="-">-</option>
         <option value="name">Name</option>
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
+        <option value="date">Date</option>
       </select>
     </label>
+    <button *ngIf="titleFlag === true" (click)="toggleSorting()">{{ sortingOrder }}</button>
+    <button *ngIf="dateFlag === true" (click)="toggleSortingByDate()">{{ sortingOrder }}</button>
     <label for=""
       >Show Done:
       <input type="checkbox" (click)="toggleDone()" />
