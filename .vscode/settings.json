@@ -26,8 +26,8 @@
         "editor.formatOnSave": true,
         "editor.smoothScrolling": true,
         "files.exclude": {
-            "**/dist": true,
-            "**/node_modules": true
+            "**/dist": false,
+            "**/node_modules": false
         },
         "files.insertFinalNewline": true,
         "files.trimTrailingWhitespace": true,

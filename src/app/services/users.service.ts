@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,8 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class UsersService {
   users = [];
-  url =
-    'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/users.json';
+  url = 'https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/users.json';
 
   constructor(private http: HttpClient) {}
 
@@ -31,6 +31,10 @@ export class UsersService {
     );
   }
 
+  getuserById(id): Observable<any> {
+    return this.http.get(`https://todo-app-2e14b-default-rtdb.europe-west1.firebasedatabase.app/users/${id}.json`);
+  }
+
   addUser(user): Observable<any> {
     if (this.users.length > 0) {
       if (this.userExists(user.username, user.password)) {
@@ -44,9 +48,7 @@ export class UsersService {
   userExists(username: string, password: string) {
     console.log(this.users);
 
-    let existingUser = this.users.filter(
-      (u) => u.username === username && u.password === password
-    );
+    let existingUser = this.users.filter((u) => u.username === username && u.password === password);
     if (existingUser.length === 1) {
       console.log(existingUser[0].id);
 

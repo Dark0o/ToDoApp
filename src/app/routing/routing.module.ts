@@ -6,6 +6,7 @@ import { ToDoDetailsComponent } from '../components/todo-details/todo-details.co
 import { ToDoListComponent } from '../components/todo-list/todo-list.component';
 import { AddToDoComponent } from '../components/add-todo/add-todo.component';
 import { SharedTodosListComponent } from '../components/shared-todos-list/shared-todos-list.component';
+import { UserProfileComponent } from '../components';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'todos/:id',
     component: ToDoDetailsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
     canActivate: [AuthGuardService],
   },
 ];

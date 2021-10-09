@@ -16,6 +16,7 @@ import {
   NavigationComponent,
   AddToDoComponent,
   SharedTodosListComponent,
+  UserProfileComponent,
 } from './components/index';
 
 @NgModule({
@@ -29,15 +30,9 @@ import {
     NavigationComponent,
     AddToDoComponent,
     SharedTodosListComponent,
+    UserProfileComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    RoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, RoutingModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
