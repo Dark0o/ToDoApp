@@ -37,7 +37,7 @@ export class UsersService {
 
   addUser(user): Observable<any> {
     if (this.users.length > 0) {
-      if (this.userExists(user.username, user.password)) {
+      if (this.userExists(user.email, user.password)) {
         alert('User already exists, please Log In');
         return;
       }
@@ -45,14 +45,14 @@ export class UsersService {
     return this.http.post(this.url, user);
   }
 
-  userExists(username: string, password: string) {
+  userExists(email: string, password: string) {
     console.log(this.users);
 
-    let existingUser = this.users.filter((u) => u.username === username && u.password === password);
+    let existingUser = this.users.filter((u) => u.email === email && u.password === password);
     if (existingUser.length === 1) {
       console.log(existingUser[0].id);
 
-      localStorage.setItem('userID', existingUser[0].id);
+      localStorage.setItem('userId', existingUser[0].id);
       return true;
     }
     return false;

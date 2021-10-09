@@ -8,32 +8,27 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  username;
+  email;
   password;
 
-  constructor(
-    private userService: UsersService,
-    private authService: AuthService
-  ) {}
+  constructor(private userService: UsersService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.userService.getSignedUpUsers().subscribe();
   }
 
-  onLogIn(username, password) {
-    this.authService.login(username, password);
+  onLogIn(email, password) {
+    this.authService.login(email, password);
   }
 
-  onSignUp(username, password) {
-    if (username === '' || password === '') {
+  onSignUp(email, password) {
+    if (email === '' || password === '') {
       alert('Please enter e-mail and password');
       return;
     }
-    this.userService
-      .addUser({ username: username, password: password })
-      .subscribe((data) => {
-        console.log(data);
-      });
-    this.userService.users.push({ username, password });
+    this.userService.addUser({ email: email, password: password }).subscribe((data) => {
+      console.log(data);
+    });
+    this.userService.users.push({ email, password });
   }
 }

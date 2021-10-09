@@ -20,18 +20,15 @@ export class AuthService {
     }
   }
 
-  login(username: string, password: string) {
-    if (this.userService.userExists(username, password)) {
+  login(email: string, password: string) {
+    if (this.userService.userExists(email, password)) {
       this.isLoggedIn = true;
       console.log('logged in');
       console.log(this.isLoggedIn);
       this.router.navigate(['todos']);
-      localStorage.setItem(
-        this.loggedInUser,
-        JSON.stringify({ username: username, isUserLoggedIn: this.isLoggedIn })
-      );
+      localStorage.setItem(this.loggedInUser, JSON.stringify({ username: email, isUserLoggedIn: this.isLoggedIn }));
       return this.isLoggedIn;
-    } else alert('Incorrect username or password!');
+    } else alert('Incorrect email or password!');
   }
 
   isUserLoggedIn(): boolean {

@@ -35,7 +35,7 @@ export class ToDoListComponent implements OnInit {
     return this.toDoService.usersTodos;
   }
   constructor(private toDoService: ToDoService) {
-    this.userId = localStorage.getItem('userID');
+    this.userId = localStorage.getItem('userId');
     console.log(this.userId);
   }
 

@@ -11,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   userId;
 
   constructor(private usersService: UsersService) {
-    this.userId = localStorage.getItem('userID');
+    this.userId = localStorage.getItem('userId');
     console.log(this.userId);
   }
 

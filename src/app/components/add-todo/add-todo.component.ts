@@ -17,7 +17,7 @@ export class AddToDoComponent implements OnInit {
   addingNewToDoStatus: string;
 
   constructor(private todoService: ToDoService, private router: Router) {
-    this.userId = localStorage.getItem('userID');
+    this.userId = localStorage.getItem('userId');
   }
 
   ngOnInit(): void {}
